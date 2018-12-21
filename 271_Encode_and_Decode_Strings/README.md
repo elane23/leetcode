@@ -7,3 +7,8 @@
 "My", "name", "is", "Elane"
 "2_My4_name2_is5_Elane"
 ```
+
+decode每次要先定位separator, two pointers
+再用substring method, 取出word， 存入list
+
+time: O(n)
