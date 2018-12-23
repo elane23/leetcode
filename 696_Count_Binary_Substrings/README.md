@@ -15,3 +15,27 @@ time: O(N)
 要加到count上： `count += Math.min(preCount, currCount)`  
 
 最开始因为`preCount初始值 = 0`, 所以Math.min() return 0, 可以不单独拎出来计算。  
+
+```
+    public int countBinarySubstrings(String s) {
+        //O(N)
+        int count = 0;
+        int preCount = 0;
+        int currCount = 1;
+        int index = 1;
+        while(index < s.length()) {
+            if(s.charAt(index - 1) != s.charAt(index)) {
+                count += Math.min(preCount, currCount);
+                preCount = currCount;
+                currCount = 1;
+            } else {
+                currCount++;
+            }
+            if(index == s.length() - 1) {
+                count += Math.min(preCount, currCount);
+            }
+            index++;
+        }
+        return count;
+    }
+```
